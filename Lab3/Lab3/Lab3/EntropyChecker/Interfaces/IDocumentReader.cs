@@ -1,5 +1,4 @@
-﻿using Lab2.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lab2.DocumentReader
 {
-    interface IDocumentReaderS
+    interface IDocumentReader
     {
         public StreamReader OpenDocument(string path);
         public string GetAllText(string text, StreamReader reader);

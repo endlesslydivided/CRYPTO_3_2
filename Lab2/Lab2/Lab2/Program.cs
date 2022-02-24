@@ -12,7 +12,7 @@ namespace Lab2
         {
             int choice = 0;
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            const string fileName = "Lab2.xls";
+            const string fileName = "Lab2-1.xls";
 
             List<char> gollandAlphabet = new List<char>()
             {
@@ -35,7 +35,7 @@ namespace Lab2
             {
                 Console.Clear();
 
-                Console.WriteLine("Выберите номер задания:\n 1\n 2\n 3\n 4\n 5-выйти");
+                Console.WriteLine("Выберите номер задания:\n- 1\n- 2\n- 3\n- 4\n- 5-выйти");
                 choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
@@ -236,7 +236,6 @@ namespace Lab2
 
                             Console.WriteLine($"Количество информации сообщения. Язык - {gollandCheckerBin.AlphabetName}: {gollandCheckerBin.AlphabetEntropy * binTextGolland.Length}");
 
-
                             ukranianCheckerBin.printAlphabet();
                             ukranianCheckerBin.printChances(chancesUkranianBin);
                             ukranianCheckerBin.printAlhabetEntropy();
@@ -314,7 +313,7 @@ namespace Lab2
                             gollandCheckerBin.getSymbolsCounts(binTextGolland, golladnDictBin);
                             ukranianCheckerBin.getSymbolsCounts(binTextUkrainian, ukranianDictBin);
 
-                            Dictionary<char, double> chancesGollandBin = gollandCheckerBin.getSymbolsChances(binTextGolland, golladnDictBin);
+                            Dictionary<char, double> chancesGollandBin = gollandCheckerBin.getSymbolsChances(binTextGolsland, golladnDictBin);
                             Dictionary<char, double> chancesUkranianBin = ukranianCheckerBin.getSymbolsChances(binTextUkrainian, ukranianDictBin);
 
 
