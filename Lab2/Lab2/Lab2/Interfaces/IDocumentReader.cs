@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab2.DocumentReader
 {
-    interface IDocumentReaderS
+    interface IDocumentReader
     {
         public StreamReader OpenDocument(string path);
         public string GetAllText(string text, StreamReader reader);

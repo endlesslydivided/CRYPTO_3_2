@@ -34,10 +34,10 @@ namespace Lab3.Services
             string resultEnc = snakeEncrypter.Encrypt();
             first.Stop();
             Console.WriteLine($"Время шифрования: {first.ElapsedMilliseconds} мс \n"); ;
+           snakeEncrypter.printMatrix(snakeEncrypter.createMatrix(resultEnc));
 
             Console.WriteLine(resultEnc);
             char[,] resultDecr = snakeEncrypter.Decrypt(resultEnc);
-            snakeEncrypter.printMatrix(resultDecr);
             string resultDecrStr = snakeEncrypter.createString(resultDecr);
 
             ExcelDocumentCreator<char, double> excel = new ExcelDocumentCreator<char, double>(new System.IO.FileInfo("Lab3.xlsx"));
@@ -46,7 +46,7 @@ namespace Lab3.Services
             excel.pack.Save();
             Console.ReadKey();
 
-            Console.WriteLine(resultDecrStr);
+            Console.WriteLine("\n"+resultDecrStr);
         }
     }
 }

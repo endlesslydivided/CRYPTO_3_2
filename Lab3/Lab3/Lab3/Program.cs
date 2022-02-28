@@ -1,10 +1,4 @@
-﻿using Lab2;
-using Lab2.DocumentReader;
-using Lab3.Services;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
+﻿using System;
 
 namespace Lab3
 {
@@ -12,41 +6,117 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            List<char> deuthAlphabet = new List<char>()
+            int c = 0;
+            while(true)
             {
-                'a','b','c','d','e','f','g','h','i','j','k',
-                'l','m','n','o','p','r','s','t','u','v',
-                'w'
-            };
+                Console.WriteLine("Введите номер задания:");
+                Console.WriteLine("1- НОД двух чисел");
+                Console.WriteLine("2- НОД трёх чисел");
+                Console.WriteLine("3- Поиск простых чисел из диапазона");
 
-            int[] keyH = new int[] { 5, 3, 6, 4, 2, 7, 1, 9, 8 };
-            char[] keyHword = new char[] { 'а', 'л', 'е', 'к', 'с', 'а', 'н', 'д', 'р' };
-            int[] keyV = new int[] { 6, 2, 5, 4, 3, 1 ,7};
-            char[] keyVword = new char[] { 'к', 'о', 'в', 'а', 'л', 'е', 'в' };
+                if (!int.TryParse(Console.ReadLine(), out c))
+                {
+                    c = -1;
+                }
+                switch(c)
+                {
+                    case 1:
+                        {
+                            int x = 0, y = 0;
+                            Console.Write("Введите первое число: ");
+                            if (!int.TryParse(Console.ReadLine(), out x))
+                            {
+                                Console.Write("Ошибка!");
+                                Console.ReadKey();
+                                Console.Clear();
+                                break;
+                            }
+                            Console.Write("Введите второе число: ");
+                            if (!int.TryParse(Console.ReadLine(), out y))
+                            {
+                                Console.Write("Ошибка!");
+                                Console.ReadKey();
+                                Console.Clear();
+                                break;
+                            }
+                            Console.WriteLine($"НОД двух чисел ({x},{y}) равен: {NODCompute.Compute(x,y)} ");
+                            Console.ReadKey();
+                            Console.Clear();
+                            break;
 
-            List<KeyValuePair<int,char>>keyVertical = new List<KeyValuePair<int, char>>();
-            List<KeyValuePair<int, char>> keyHorizontal = new List<KeyValuePair<int, char>>();
+                        }
 
-            for (int i =0; i < keyV.Length;i++)
-            {
-                keyVertical.Add(new KeyValuePair<int,char>(keyV[i],keyVword[i]));
+                    case 2:
+                        {
+                            int x = 0, y = 0, z = 0;
+                            Console.Write("Введите первое число: ");
+                            if (!int.TryParse(Console.ReadLine(), out x))
+                            {
+                                Console.Write("Ошибка!");
+                                Console.ReadKey();
+                                Console.Clear();
+                                break;
+                            }
+                            Console.Write("Введите второе число: ");
+                            if (!int.TryParse(Console.ReadLine(), out y))
+                            {
+                                Console.Write("Ошибка!");
+                                Console.ReadKey();
+                                Console.Clear();
+                                break;
+                            }
+                            Console.Write("Введите третье число: ");
+                            if (!int.TryParse(Console.ReadLine(), out z))
+                            {
+                                Console.Write("Ошибка!");
+                                Console.ReadKey();
+                                Console.Clear();
+                                break;
+                            }
+
+                            Console.WriteLine($"НОД трёх чисел ({x},{y},{z}) равен: {NODCompute.Compute(z,NODCompute.Compute(x, y))} ");
+                            Console.ReadKey();
+                            Console.Clear();
+                            break;
+
+                        }
+                    case 3:
+                        {
+                            int x = 0, y = 0;
+                            Console.Write("Введите первое число: ");
+                            if (!int.TryParse(Console.ReadLine(), out x))
+                            {
+                                Console.Write("Ошибка!");
+                                Console.ReadKey();
+                                Console.Clear();
+                                break;
+                            }
+                            Console.Write("Введите второе число, больше первого: ");
+                            if (!int.TryParse(Console.ReadLine(), out y))
+                            {
+                                Console.Write("Ошибка!");
+                                Console.ReadKey();
+                                Console.Clear();
+                                break;
+                            }
+                            NODCompute.FindSimple(x, y);
+                            Console.ReadKey();
+                            Console.Clear();
+                            break;
+
+                        }
+                    case -1:
+                        {
+                            Console.Clear();
+                            break;
+                        }
+                    default:
+                        {
+                            Console.Clear();
+                            break;
+                        }
+                }
             }
-            for (int i = 0; i < keyH.Length; i++)
-            {
-                keyHorizontal.Add(new KeyValuePair<int, char>(keyH[i],keyHword[i]));
-            }
-
-            try
-            {
-                SnakeService.MakeSnake(deuthAlphabet);
-                ReplacementService.MakeReplace(deuthAlphabet,keyVertical,keyHorizontal);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"\n{ex.Message}");
-            }
-
-
         }
     }
 }

@@ -17,8 +17,7 @@ namespace Lab2
             List<char> gollandAlphabet = new List<char>()
             {
                 'a','b','c','d','e','f','g','h','i','j','k',
-                'l','m','n','o','p','r','s','t','u','v',
-                'w'
+                'l','m','n','o','p','r','s','t','u','v','w'
             };
 
             List<char> ukranianAlphabet = new List<char>()
@@ -313,17 +312,23 @@ namespace Lab2
                             gollandCheckerBin.getSymbolsCounts(binTextGolland, golladnDictBin);
                             ukranianCheckerBin.getSymbolsCounts(binTextUkrainian, ukranianDictBin);
 
-                            Dictionary<char, double> chancesGollandBin = gollandCheckerBin.getSymbolsChances(binTextGolsland, golladnDictBin);
+                            Dictionary<char, double> chancesGollandBin = gollandCheckerBin.getSymbolsChances(binTextGolland, golladnDictBin);
                             Dictionary<char, double> chancesUkranianBin = ukranianCheckerBin.getSymbolsChances(binTextUkrainian, ukranianDictBin);
 
+                            gollandCheckerBin.printAlphabet();
+                            gollandCheckerBin.printChances(chancesGollandBin);
+                            gollandCheckerBin.printAlhabetEntropy();
+                            ukranianCheckerBin.printAlphabet();
+                            ukranianCheckerBin.printChances(chancesUkranianBin);
+                            ukranianCheckerBin.printAlhabetEntropy();
 
                             Console.WriteLine($"Ошибка = 0.1. Количество информации сообщения. Язык - {gollandCheckerBin.AlphabetName}: {gollandCheckerBin.computeTextEntropyWithError(chancesGollandBin, 0.1) * binTextGolland.Length}");
                             Console.WriteLine($"Ошибка = 0.5. Количество информации сообщения. Язык - {gollandCheckerBin.AlphabetName}: {gollandCheckerBin.computeTextEntropyWithError(chancesGollandBin, 0.5) * binTextGolland.Length}");
-                            Console.WriteLine($"Ошибка = 1. Количество информации сообщения. Язык - {gollandCheckerBin.AlphabetName}: {gollandCheckerBin.computeTextEntropyWithError(chancesGollandBin, 1) * binTextGolland.Length}");
+                            Console.WriteLine($"Ошибка = 0.9. Количество информации сообщения. Язык - {gollandCheckerBin.AlphabetName}: {gollandCheckerBin.computeTextEntropyWithError(chancesGollandBin, 0.9) * binTextGolland.Length}");
 
                             Console.WriteLine($"Ошибка = 0.1. Количество информации сообщения. Язык - {ukranianCheckerBin.AlphabetName}: {ukranianCheckerBin.computeTextEntropyWithError(chancesUkranianBin,0.1) * binTextGolland.Length}");
                             Console.WriteLine($"Ошибка = 0.5. Количество информации сообщения. Язык - {ukranianCheckerBin.AlphabetName}: {ukranianCheckerBin.computeTextEntropyWithError(chancesUkranianBin, 0.5) * binTextGolland.Length}");
-                            Console.WriteLine($"Ошибка = 1. Количество информации сообщения. Язык - {ukranianCheckerBin.AlphabetName}: {ukranianCheckerBin.computeTextEntropyWithError(chancesUkranianBin, 1) * binTextGolland.Length}");
+                            Console.WriteLine($"Ошибка = 0.9. Количество информации сообщения. Язык - {ukranianCheckerBin.AlphabetName}: {ukranianCheckerBin.computeTextEntropyWithError(chancesUkranianBin, 0.9) * binTextGolland.Length}");
 
 
                             Console.ReadKey();
